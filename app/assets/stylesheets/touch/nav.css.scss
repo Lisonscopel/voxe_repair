@@ -1,0 +1,22 @@
+.nav-bar {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  height: 44px;
+  width: 100%;
+  background: #EEE url('#{asset_path('touch/nav/64.png', 'images')}') no-repeat center;
+  background-size: 32px 32px;
+  -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, .52);
+  
+  .title {
+    position: absolute;
+    top: 10px;
+    width: 100%;
+    z-index: 1;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    text-shadow: 0 -1px 0 #167894;
+  }
+}

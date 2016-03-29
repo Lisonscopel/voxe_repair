@@ -1,0 +1,22 @@
+!!!
+%html
+  %head
+    %title= "Live | Voxe"
+    = stylesheet_link_tag "embed/live"
+    = javascript_include_tag "embed/live"
+    = render "layouts/partials/google_analytics"
+    = render "layouts/partials/chartbeat_header"
+  %body
+    = render 'layouts/partials/facebook.html'
+    :javascript
+      $(function() {
+        new VoxeLive();
+      });
+    #app
+      #high-line
+      
+    #templates
+      = render 'templates.mustache'
+
+    = render "layouts/partials/chartbeat_body"
+    = render 'layouts/partials/twitter.html'

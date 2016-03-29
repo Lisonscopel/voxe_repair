@@ -1,0 +1,3 @@
+module Mobile::ApplicationHelper
+  
+end

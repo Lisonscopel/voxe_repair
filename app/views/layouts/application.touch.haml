@@ -1,0 +1,23 @@
+!!! HTML
+%html
+  %head
+    %title Voxe
+    %link{rel: "shortcut icon", href: "#{asset_path('web/favicon.ico')}"}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    / http://developer.apple.com/library/ios/#documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html#//apple_ref/doc/uid/TP40002051-CH3-SW3
+    <link rel="apple-touch-icon" href="#{image_path('iOS/57ios.png')}" />
+    <link rel="apple-touch-icon" sizes="72x72" href="#{image_path('iOS/72ios.png')}" />
+    <link rel="apple-touch-icon" sizes="114x114" href="#{image_path('iOS/114ios.png')}" />
+    
+    = stylesheet_link_tag "touch"
+    = javascript_include_tag "touch"
+    = csrf_meta_tags
+    = render "layouts/partials/google_analytics"
+    = render "layouts/partials/chartbeat_header"
+    
+  %body{:class => "#{touch_device}"}
+    = render partial: 'layouts/partials/facebook', formats: [:html]
+    = yield
+    = render partial: 'layouts/partials/twitter', formats: [:html]
+    = render "layouts/partials/chartbeat_body"
+    

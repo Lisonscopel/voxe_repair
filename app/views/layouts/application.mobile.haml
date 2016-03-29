@@ -1,0 +1,16 @@
+!!! HTML
+%html
+  %head
+    %title= page_title
+    = stylesheet_link_tag "mobile"
+    %link{rel: "shortcut icon", href: "#{asset_path('web/favicon.ico')}"}
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0"}
+    = render "layouts/partials/google_analytics"
+    = render "layouts/partials/open_graph"
+  %body{id: "#{controller.controller_name}-#{controller.action_name}"}
+    #logo
+      = link_to root_path do
+        = image_tag('icons/32.png', valign: "middle", border: 0)
+        Voxe
+    #page
+      #page-container= yield

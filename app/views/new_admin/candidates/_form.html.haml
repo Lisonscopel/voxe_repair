@@ -1,0 +1,9 @@
+= simple_form_for [:new_admin, @candidate] do |f|
+  = f.input :first_name
+  = f.input :last_name
+  = f.input :namespace
+  - if f.object.photo?
+    = image_tag f.object.photo_url(:small)
+  = f.simple_fields_for :photos, Photo.new do |p|
+    = p.input :image
+  = f.button :submit

@@ -1,0 +1,29 @@
+.button {
+  position: absolute;
+  z-index: 2;
+  top: 5px;
+  cursor: pointer;
+  color: #333;
+  text-align: center;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: bold;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  border: 1px solid #CCC;
+  border-bottom-color: #BBB;
+  border-radius: 5px;
+  background-color: #E6E6E6;
+  background-image: -webkit-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
+}
+
+.button:active {
+  background-image: -webkit-gradient(linear, center top, center bottom, from(#53b0ca), to(#53b0ca));
+}
+
+.button.right {
+  right: 6px;
+}
+
+.button.left {
+  left: 6px;
+}

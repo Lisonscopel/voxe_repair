@@ -1,0 +1,96 @@
+.page-header
+  %h1 Everyone
+  
+.page-header
+  %h2
+    %small GET
+    = "/tags/{id}"
+  
+%p Get information about a tag.
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/tags/#{Tag.first.id}
+  
+%p
+  %a.btn.small{href: "/api/v1/tags/#{Tag.first.id}".to_url} Try
+
+.page-header
+  %h2
+    %small GET
+    \/tags/search
+
+%p Search tags.
+
+%h3 Parameters
+%table.bordered-table
+  %tbody
+    %tr
+      %td name
+      %td Economie
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/tags/search
+
+%p
+  %a.btn.small{href: "/api/v1/tags/search".to_url} Try
+
+.page-header
+  %h1 Protected
+
+.page-header
+  %h2
+    %small POST
+    \/tags
+
+%p Create a tag.
+
+%h3 Parameters
+%table.bordered-table
+  %tbody
+    %tr
+      %td tag[name]
+      %td Les agents publics
+    %tr
+      %td tag[namespace]
+      %td les-agents-publics
+    %tr
+      %td tag[icon]
+      %td (Image binary file)
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/tags
+
+.page-header
+  %h2
+    %small PUT
+    \/tags/{id}
+
+%p Update a tag.
+
+%h3 Parameters
+%table.bordered-table
+  %tbody
+    %tr
+      %td tag[name]
+      %td Les agents publics
+    %tr
+      %td tag[namespace]
+      %td les-agents-publics
+    %tr
+      %td tag[icon]
+      %td (Image binary file)
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/tags/{id}

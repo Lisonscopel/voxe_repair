@@ -1,0 +1,29 @@
+.page-header
+  %h2 Election
+
+%p 
+
+%h3 Response
+%table.bordered-table
+  %tbody
+    %tr
+      %td id
+      %td A unique identifier for this election.
+    %tr
+      %td name
+      %td The name of the election.
+    %tr
+      %td namespace
+      %td The string used in urls.
+    %tr
+      %td published
+      %td A boolean that show if this election is published or not. Default: false.
+    %tr
+      %td tags
+      %td
+        %i Optional
+        (only present in elections/id response). 
+        A hierarchy of tags that are hand-picked for this election.
+    %tr
+      %td candidacies
+      %td A list of candidacies that run for this election.

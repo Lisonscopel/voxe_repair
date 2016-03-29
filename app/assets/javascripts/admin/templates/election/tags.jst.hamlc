@@ -1,0 +1,57 @@
+%h1 Thèmes
+
+%ul.breadcrumb
+  - if @tag
+    %li
+      %a{href: "#elections/#{@election.id}/tags"} Thèmes
+      %span.divider /
+    - for parent_tag in @tag.parents()
+      %li
+        %a{href: "#elections/#{@election.id}/tags/#{parent_tag.id}"}= parent_tag.get 'name'
+        %span.divider /
+    %li.active= "#{@tag.get 'name'}"
+  - else
+    Thèmes
+
+
+- if error_messages = @flash.rename_error_messages
+  .alert-message.block-message.error
+    %p
+      != "Il y a <strong>#{error_messages.length}</strong> erreur#{if error_messages.length > 1 then 's' else ''}"
+      %ul
+        - for error_message in error_messages
+          %li= error_message
+
+%table.tags
+  - for tag in @tags.models
+    %tr{'data-tag-id': tag.id}
+      %form.rename-tag-form
+        %td.tag-name
+          %a{href: "#elections/#{@election.id}/tags/#{tag.id}"}= tag.get 'name'
+          %input{type: 'text'}
+        %td.rename-cell
+          %button.btn.primary.start-rename-tag{type: 'button'} renommer
+          %input.btn.success.finish-rename-tag{type: 'submit', value: 'Valider'}
+          %button.btn.error.cancel-rename-tag{type: 'button'} annuler
+        %td
+          %button.btn.error.remove-tag{type: 'button'} -
+
+%form.add-tag{method: 'POST'}
+  %h2 Ajouter/Créer un thème
+
+  - if @flash.error_messages
+    .alert-message.block-message.error
+      %p
+        != "Il y a <strong>#{@flash.error_messages.length}</strong> erreur#{if @flash.error_messages.length > 1 then 's' else ''}"
+        %ul
+          - for error_message in @flash.error_messages
+            %li= error_message
+  %fieldset
+    .clearfix
+      %label Nom tu thème
+      .input
+        %input.span8.tag-name{name: 'tagName'}
+        %input.tag-id{type: 'hidden', name: 'tagId'}
+    .clearfix
+      .input
+        %input.btn.success.span2{type: 'submit', value: 'Créer', 'data-loading-text': '...'}

@@ -1,0 +1,119 @@
+%script#elections-list-template{type: "text/html"}
+  .nav-bar
+
+  .table-view-container
+    .table-view
+      %ul.elections
+        :plain
+          {{#elections}}
+            <li election-id="{{id}}">
+              {{name}}
+            </li>
+          {{/elections}}
+
+%script#share-template{type: "text/html"}
+  .nav-bar
+    %a.button.left.close Close
+
+  .table-view-container
+    .table-view
+
+      %p You will be able to edit what you share before posting.
+
+      %ul
+        %li.facebook
+          .image= image_tag 'share/facebook48.png'
+          .name Facebook
+
+        = link_to twitter_intent_url, target: "_blank" do
+          %li.twitter
+            .image= image_tag 'share/twitter48.png'
+            .name Twitter
+
+%script#candidacy-cell-template{type: "text/html"}
+  :plain
+    <li data-candidacy-namespace="{{candidacy.namespace}}">
+      {{#candidacy.candidates}}
+        <div class="image"><img src="{{photo.sizes.medium.url}}" width="50px" height="50px" /></div>
+        <div class="name">{{firstName}} {{lastName}}</div>
+      {{/candidacy.candidates}}
+    </li>
+
+%script#candidacies-list-template{type: "text/html"}
+  .nav-bar
+    %a.button.left.nav  ← Elections
+    %a.button.right.compare Comparer
+
+  .table-view-container
+    .table-view
+      %ul.candidacies
+
+%script#tags-list-template{type: "text/html"}
+  .nav-bar
+    %a.button.left.nav  ← Candidats
+
+  .table-view-container
+    .table-view
+      %ul.tags
+        :plain
+          {{#tags}}
+            <li tag-id="{{id}}">
+              <div class="icon"><img src="{{icon.prefix}}64{{icon.name}}" width="32px" height="32px" /></div>
+              <div class="name">{{name}}</div>
+            </li>
+          {{/tags}}
+
+%script#compare-template{type: "text/html"}
+  .nav-bar
+    %a.button.left.nav  ← Themes
+    %a.button.right.share Share
+
+  .table-view-container
+    .table-view
+
+%script#propositions-template{type: "text/html"}
+  :plain
+    {{#loading}}<div class="ajax-loader">#{image_tag('touch/ajax-loader.gif')}</div>{{/loading}}
+
+    {{#categories}}
+      <div class="category">
+        <div class="category-name">{{name}}</div>
+        <div class="section">
+          {{#candidacies}}
+            <div class="candidacy">
+              {{#candidates}}
+                <div class="photo">
+                  <img src="{{photo.sizes.medium.url}}" width="44px" height="44px" />
+                </div>
+              {{/candidates}}
+
+              {{#propositions}}
+                <div class="proposition">
+                  {{text}}
+                </div>
+              {{/propositions}}
+            </div>
+          {{/candidacies}}
+        </div>
+        {{#sections}}
+          <div class="section">
+            <div class="section-name">{{name}}</div>
+            {{#candidacies}}
+              <div class="candidacy">
+                {{#candidates}}
+                  <div class="photo">
+                    <img src="{{photo.sizes.medium.url}}" width="44px" height="44px" />
+                  </div>
+                {{/candidates}}
+
+                {{#propositions}}
+                  <div class="proposition">
+                    {{text}}
+                  </div>
+                {{/propositions}}
+              </div>
+            {{/candidacies}}
+          </div>
+        {{/sections}}
+      </div>
+    {{/categories}}

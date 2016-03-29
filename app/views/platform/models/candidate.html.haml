@@ -1,0 +1,26 @@
+.page-header
+  %h2 Candidate
+  
+%p 
+
+%h3 Response
+%table.bordered-table
+  %tbody
+    %tr
+      %td id
+      %td A unique identifier for this candidate.
+    %tr
+      %td namespace
+      %td The string used in urls.
+    %tr
+      %td firstName
+      %td The first name of this candidate.
+    %tr
+      %td lastName
+      %td The last name of this candidate.
+    %tr
+      %td candidacies
+      %td
+        %i Optional
+        (only present in candidates/id response).
+        A list of candidacies that this candidate has apply for an election.

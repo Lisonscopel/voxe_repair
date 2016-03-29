@@ -1,0 +1,129 @@
+.page-header
+  %h1 Everyone
+
+.page-header
+  %h2
+    %small GET
+    = "/candidates/{id}"
+  
+%p Get information about a candidate.
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/candidates/#{Candidate.first.id}
+  
+%p
+  %a.btn.small{href: "/api/v1/candidates/#{Candidate.first.id}".to_url} Try
+
+.page-header
+  %h2
+    %small GET
+    \/candidates/search
+
+%p Search a candidate by name.
+
+%h3 Parameters
+%table.bordered-table
+  %tbody
+    %tr
+      %td name
+      %td Nico
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/candidates/search?name=Nico
+
+%p
+  %a.btn.small{href: "/api/v1/candidates/search?name=Sarkozy".to_url} Try
+
+.page-header
+  %h1 Protected
+
+.page-header
+  %h2
+    %small POST
+    \/candidates
+
+%p Create a candidate.
+
+%h3 Parameters
+%table.bordered-table
+  %tbody
+    %tr
+      %td candidate[firstName]
+      %td John
+    %tr
+      %td candidate[lastName]
+      %td Doe
+    %tr
+      %td candidate[namespace]
+      %td johndoe
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/candidates
+
+.page-header
+  %h2
+    %small POST
+    \/candidates/{id}/addphoto
+
+%p Add photo to a candidate.
+
+%h3 Parameters
+%table.bordered-table
+  %tbody
+    %tr
+      %td image
+      %td (Binary image file)
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/candidates/4ed1cb0203ad190006000132/addphoto
+
+.page-header
+  %h2
+    %small PUT
+    \/candidates/{id}
+
+%p Update a candidate.
+
+%h3 Parameters
+%table.bordered-table
+  %tbody
+    %tr
+      %td candidate[firstName]
+      %td John
+    %tr
+      %td candidate[lastName]
+      %td Doe
+    %tr
+      %td candidate[namespace]
+      %td johndoe
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/candidates/4ed1cb0203ad190006000132
+
+.page-header
+  %h2
+    %small DELETE
+    \/candidates/{id}
+
+%p Destroy a candidate from database.
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/candidates/4ed1cb0203ad190006000132

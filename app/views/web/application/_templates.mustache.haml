@@ -1,0 +1,243 @@
+%script#theater-template{type: "text/html"}
+  .theater-curtain
+  .theater-container
+    .theater-movie
+
+%script#menu-country-template{type: "text/html"}
+  {{country.name}}
+
+%script#menu-election-template{type: "text/html"}
+  {{election.name}}
+
+%script#menu-candidacies-template{type: "text/html"}
+  :plain
+    {{#candidacy1}}
+      {{#candidates}}
+        <img src="{{photo.sizes.small.url}}" width="50px" height="50px" valign="middle" />
+      {{/candidates}}
+    {{/candidacy1}}
+    vs
+    {{#candidacy2}}
+      {{#candidates}}
+        <img src="{{photo.sizes.small.url}}" width="50px" height="50px" valign="middle" />
+      {{/candidates}}
+    {{/candidacy2}}
+
+%script#menu-tags-template{type: "text/html"}
+  :plain
+    {{#tag}}
+      <li class="theme">
+        <img src="{{icon.prefix}}32{{icon.name}}" width="32px" height="32px" valign="midle" />
+        {{name}}
+      </li>
+      {{#tags}}
+        <li class="section" data-tag-id="{{id}}">{{name}}</li>
+      {{/tags}}
+    {{/tag}}
+
+%script#country-cell-template{type: "text/html"}
+  :plain
+    <div class="country">
+      <img src="https://voxe.s3.amazonaws.com/countries/{{country.namespace}}.jpg" title="{{country.name}}" />
+      <div class="name">{{country.name}}</div>
+    </div>
+
+%script#election-cell-template{type: "text/html"}
+  :plain
+    <div election-id="{{election.id}}" class="election">
+      <div class="name">{{election.name}}</div>
+      <div class="facepile">
+        {{#election.candidacies}}
+          {{#candidates}}
+            <img src="{{photo.sizes.small.url}}" width="30px" height="30px" />
+          {{/candidates}}
+        {{/election.candidacies}}
+      </div>
+    </div>
+%script#local-elections-cell-template(type="text/html")
+  :plain
+    <div election-id="{{election.id}}" class="election elections-locals">
+      <div class="name">Elections municipales</div>
+      <div class="ui-widget">
+        <div class="instructions">Dans quelle ville souhaitez vous comparer les candidats ?</div>
+        <input type="hidden" placeholder="Choisissez une ville. ex: Paris, Lyon, Marseille" />
+      </div>
+    </div>
+
+%script#candidacy-cell-template{type: "text/html"}
+  :plain
+    {{#candidacy.candidates}}
+      <div class="image"><img src="{{photo.sizes.small.url}}" width="50px" height="50px" /></div>
+      <div class="name">{{firstName}} {{lastName}}</div>
+    {{/candidacy.candidates}}
+
+%script#tags-list-template{type: "text/html"}
+  :plain
+    {{#tags}}
+      <li tag-id="{{id}}">
+        <div class="icon"><img src="{{icon.prefix}}32{{icon.name}}" width="32px" height="32px" /></div>
+        <div class="name">{{name}}</div>
+      </li>
+    {{/tags}}
+
+%script#comparison-template{type: "text/html"}
+  :plain
+    {{#tag}}
+      <div class="tag-image">
+        <img src="{{icon.prefix}}64{{icon.name}}" width="64px" height="64px" />
+      </div>
+      <div class="tag">
+        <span>{{name}}</span>
+      </div>
+
+      <div class="indicator"><div class="tag-image">#{image_tag('web/ajax-loader.gif')}</div></div>
+    {{/tag}}
+
+%script#comparison-tag-template{type: "text/html"}
+  :plain
+    {{#tag}}
+      <div class="tag" id="tag-{{id}}">
+        <span>{{name}}</span>
+      </div>
+    {{/tag}}
+
+%script#comparison-candidacy-template{type: "text/html"}
+  :plain
+    {{#candidacy}}
+      {{#candidates}}
+        <img src="{{photo.sizes.medium.url}}" width="60px" height="60px" />
+      {{/candidates}}
+    {{/candidacy}}
+
+%script#proposition-embed-video-template{type: "text/html"}
+  :plain
+    {{#embed}}
+      <div class="play-button"></div>
+      <img src="{{imageUrl}}" width="255px" />
+    {{/embed}}
+
+%script#proposition-embed-dataviz-template{type: "text/html"}
+  :plain
+    {{#embed}}
+      <img src="{{imageUrl}}" width="255px" />
+      <p class="legend">{{title}}</p>
+    {{/embed}}
+
+%script#proposition-embed-links-template{type: "text/html"}
+  :plain
+    <p>#{t("comparator.learn_more")}:</p>
+
+%script#proposition-embed-link-template{type: "text/html"}
+  :plain
+    {{#embed}}
+      <a href="{{url}}" target="_blank">{{title}}</a>
+    {{/embed}}
+
+%script#comparison-proposition-template{type: "text/html"}
+  :plain
+    {{#proposition}}
+      <div class="text">{{text}}</div>
+      <div class="actions ribbon">
+        <div class="share">
+          #{image_tag('share/facebook16.png', class: 'facebook')}
+          <a href="https://twitter.com/intent/tweet?related=voxe&amp;text={{twitterMessage}}" target="_blank">#{image_tag('share/twitter16.png')}</a>
+        </div>
+        <div class="favorite">
+          <a class="btn" href="#" original-title="mark as Favorite"></a>
+          <span class="count"></span>
+        </div>
+        <div class="support">
+          <a class="btn" href="#" original-title="mark as Support"></a>
+          <span class="count"></span>
+        </div>
+        <div class="against">
+          <a class="btn" href="#" original-title="mark as Against"></a>
+          <span class="count"></span>
+        </div>
+        <div class="comment">
+          <a class="btn" href="#"></a>
+          <span class="count"></span>
+        </div>
+        <!-- <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2F#{Settings.host}%2Fpropositions%2F{{id}}&amp;send=false&amp;layout=button_count&amp;width=80&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=#{Settings.facebook.app_id}" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:80px; height:21px;" allowTransparency="true"></iframe> -->
+      </div>
+    {{/proposition}}
+
+%script#no-proposition-available-template{type: "text/html"}
+  .no-proposition-available
+    = t "comparator.no_proposition_available"
+    <br/>
+    %a{href: 'https://docs.google.com/spreadsheet/viewform?formkey=dGNsLWFoYXZ0LXRaRVVrdU9Tay04ZFE6MQ', target: '_blank'}
+      = t "comparator.send_us_a_missing_proposition"
+
+%script#comment-form-template{type: "text/html"}
+  :plain
+    {{#user.token}}
+      <textarea></textarea>
+      <button>Commenter</button>
+    {{/user.token}}
+    {{^user.token}}
+      <a href="#" class="session">#{t("comparator.sign_in_or_sign_up_to_add_a_comment")}</a>
+    {{/user.token}}
+
+
+%script#comment-template{type: "text/html"}
+  :plain
+    {{#comment}}
+      {{#user.picture}}<img src="{{user.picture}}" width="16" height="16" valign="middle" />{{/user.picture}}
+      <span>{{user.name}}</span> {{text}}
+      <div class="comment-actions"><a class="remove" href="#">X</a></div>
+    {{/comment}}
+
+%script#user-profile-template{type: "text/html"}
+  :plain
+    {{#user.name}}
+      {{#user.picture}}<img src="{{user.picture}}" width="16" height="16" valign="middle" />{{/user.picture}}
+      <a href="#" title="Edit my profile" class="edit-profile">{{user.name}}</a> <a href="#" title="Logout" class="logout">[x]</a>
+    {{/user.name}}
+
+    {{^user.name}}
+      <a href="#" class="connect">#{ t 'account.sign_in' }</a>
+    {{/user.name}}
+
+%script#users-new-template{type: "text/html"}
+  :plain
+    <div class="logo">#{image_tag "icons/64.png"}</div>
+
+    <div class="fb-connect" data-scope="#{Settings.fb_defaults.scope}">Facebook</div>
+
+    <div class="ribbon">#{t 'account.not_yet_on_voxe_signup'}</div>
+    <div class="fields">
+      <div class="field"><input type='text' name='name' placeholder='#{t 'account.full_name'}' /></div>
+      <div class="field"><input type='text' name='email' placeholder='#{t 'account.email_address'}' /></div>
+      <div class="field"><input type='password' name='password' placeholder='#{t 'account.password'}' /></div>
+
+      <div class="button"><a href="#" class="button">#{t 'account.sign_up'}</a></div>
+      <ul class="errors"></ul>
+    </div>
+
+%script#users-signin-template{type: "text/html"}
+  :plain
+    <div class="ribbon">#{t 'account.already_on_voxe_sign_in'}</div>
+    <div class="fields">
+      <div class="field"><input type='text' name='email' placeholder='#{t 'account.email_address'}' /></div>
+      <div class="field"><input type='password' name='password' placeholder='#{t 'account.password'}' /></div>
+      <div class="button"><a href="#" class="button">#{t 'account.sign_in'}</a></div>
+      <ul class="errors"></ul>
+    </div>
+
+    <div class="facepile">
+      <iframe src="//www.facebook.com/plugins/facepile.php?href=https%3A%2F%2Fwww.facebook.com%2Fjoinvoxe&amp;&amp;action&amp;size=small&amp;max_rows=1&amp;width=300&amp;colorscheme=light&amp;appId=339716929372553" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:400px;" width="400px" height="60px" allowTransparency="true"></iframe>
+    </div>
+
+%script#user-edit-profile-template{type: "text/html"}
+  :plain
+    <div class="ribbon">#{t 'account.edit_my_profile'}</div>
+
+    <div class="fields">
+      <div class="field"><input type='text' name='name' placeholder='#{t 'account.full_name'}' value="{{user.name}}" /></div>
+      <div class="field"><input type='text' name='email' placeholder='#{t 'account.email_address'}' value="{{user.email}}" /></div>
+      <div class="field">Is anonymous?<input type="checkbox" name="is_anonymous" {{#user.is_anonymous}}checked{{/user.is_anonymous}}/></div>
+
+      <div class="button"><a href="#" class="button save">OK</a></div>
+      <ul class="errors"></ul>
+    </div>

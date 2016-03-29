@@ -1,0 +1,22 @@
+%form.embed-form
+  .page-header
+    %h1 Embed
+
+  %p Add Voxe to your website. Only one line of code.
+  %p We recommend a minimum width of 500 pixels and a minimum height of 480px.
+
+  #election-list
+  #tag-filter
+  #candidacy-filter
+  #default-tags
+  #default-candidacies
+  #preview
+
+  .page-header    
+    %h2
+      Need help?
+      
+  %p Send an email to api {at} voxe.org
+
+  :javascript
+    new Platform.Views.EmbedFormView({el: $('.embed-form')})

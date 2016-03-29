@@ -1,0 +1,226 @@
+.page-header
+  %h1
+    Everyone
+    
+.page-header
+  %h2
+    %small GET
+    = "/elections/{id}"
+  
+%p Get information about an election.
+
+%h3 Parameters
+%table.bordered-table
+  %tbody
+    %tr
+      %td tags
+      %td all (returns all tags). By default, returns only root tags.
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/elections/#{Election.first.id}
+  
+%p
+  %a.btn.small{href: "/api/v1/elections/#{Election.first.id}".to_url} Try
+
+.page-header
+  %h2
+    %small GET
+    = "/elections/search"
+    
+%p Search for elections.
+    
+%h3 Parameters
+%table.bordered-table
+  %tbody
+    %tr
+      %td published
+      %td all
+    %tr
+      %td limit
+      %td 10
+    %tr
+      %td offset
+      %td 50
+    / %tr
+    /   %td year
+    /   %td 2012
+    / %tr
+    /   %td countryId
+    /   %td 
+    
+%p
+  %span.label EXAMPLE
+    
+%pre
+  http://voxe.org/api/v1/elections/search
+  
+%p
+  %a.btn.small{href: "/api/v1/elections/search".to_url} Try
+
+.page-header
+  %h1
+    Protected
+
+.page-header
+  %h2
+    %small POST
+    \/elections
+
+%p Create an election.
+
+%h3 Parameters
+%table.bordered-table
+  %tbody
+    %tr
+      %td election[name]
+      %td Election Présidentielle 2012
+    %tr
+      %td election[namespace]
+      %td electionpresidentielle2012
+    %tr
+      %td election[published]
+      %td false (default)
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/elections
+
+
+.page-header
+  %h2
+    %small PUT
+    \/elections/{id}
+
+%p Update an election.
+
+%h3 Parameters
+%table.bordered-table
+  %tbody
+    %tr
+      %td election[name]
+      %td Election Présidentielle 2012
+    %tr
+      %td election[namespace]
+      %td electionpresidentielle2012
+    %tr
+      %td election[published]
+      %td false
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/elections/4ed1cb0203ad190006000001
+
+.page-header
+  %h2
+    %small POST
+    \/elections/{id}/addtag
+
+%p Add a tag on an election
+
+%h3 Parameters
+%table.bordered-table
+  %tbody
+    %tr
+      %td tagId
+      %td 4f0a16e356cc600ad6000002
+    %tr
+      %td parentTagId (optional)
+      %td 4f0a16e556cc600ad6000248
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/elections/4ed1cb0203ad190006000001/addtag
+
+.page-header
+  %h2
+    %small DELETE
+    \/elections/{id}/removetag
+
+%p Remove a tag on an election
+
+%h3 Parameters
+%table.bordered-table
+  %tbody
+    %tr
+      %td tagId
+      %td 4f0a16e356cc600ad6000002
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/elections/4ed1cb0203ad190006000001/removetag
+
+%p
+  %a.btn.small Try
+
+
+.page-header
+  %h2
+    %small POST
+    \/elections/{id}/addcandidacy
+
+%p Add a candidacy on an election
+
+%h3 Parameters
+%table.bordered-table
+  %tbody
+    %tr
+      %td candidateIds
+      %td 4f0a16e356cc600ad6000002,4f0a16e356cc600ad6000003
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/elections/4ed1cb0203ad190006000001/addcandidacy
+
+.page-header
+  %h2
+    %small POST
+    \/elections/{id}/addcontributor
+
+%p Add a contributor to an election.
+
+%h3 Parameters
+%table.bordered-table
+  %tbody
+    %tr
+      %td userId
+      %td 4f0c50dd18c8e80004000001
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/elections/4f0c50dd18c8e80004000001/addcontributor
+
+.page-header
+  %h2
+    %small POST
+    \/elections/{id}/addambassador
+
+%p Add an ambassador to an election.
+
+%h3 Parameters
+%table.bordered-table
+  %tbody
+    %tr
+      %td userId
+      %td 4f0c50dd18c8e80004000001
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/elections/4f0c50dd18c8e80004000001/addambassador
+

@@ -1,0 +1,16 @@
+%ul
+  - for user in @collection.models
+    %li= user.get "name"
+
+%hr/
+
+%form#contributor-form
+  %h4 Add a contributor to this election
+  %fieldset
+    .clearfix
+      %label Name
+      .input
+        %input.name{name: "name"}
+        %input.id{type: "hidden", name: "id"}
+    .actions
+      %input.btn.primary{type: 'submit', value: 'Add'}

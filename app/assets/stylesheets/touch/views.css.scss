@@ -1,0 +1,183 @@
+#elections-list {
+    
+  ul {
+    margin: 10px;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    background-color: #fff;
+  }
+  
+  ul li {
+    cursor: pointer;
+    padding: 10px;
+    overflow: auto;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+  }
+  
+  ul li:last-child {
+    border-bottom: 0px solid #eee;
+  }
+
+}
+
+#candidacies-list {
+    
+  ul {
+    margin: 10px;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    background-color: #fff;
+  }
+  
+  ul li {
+    cursor: pointer;
+    padding: 5px 10px;
+    overflow: auto;
+    border-bottom: 1px solid #eee;
+    .image {
+      float: left;
+      img {
+        border-radius: 2px;
+      }
+    }
+    .name {
+      margin: 10px 0 0 60px;
+    }
+  }
+  
+  li.selected:first-child {
+    border-radius: 3px 3px 0 0;
+  }
+  
+  li.selected {
+    font-weight: bold;
+    background: url('#{asset_path('touch/selected-bullet.png', 'images')}') no-repeat 95% 7px;
+    background-size: 30px 30px;
+  }
+  
+}
+
+#tags {
+  
+  ul {
+    margin: 10px;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    background-color: #fff;
+  }
+  
+  li {
+    cursor: pointer;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    overflow: auto;
+    .icon {
+      float: left;
+      img {
+        border-radius: 3px;
+      }
+    }
+    .name {
+      margin: 4px 0 0 42px;
+    }
+  }
+  
+/*  li:active {
+    background-color: #eee;
+  }*/
+  
+  li:last-child {
+    border-bottom: 0px solid #eee;
+  }
+  
+}
+
+#compare {
+  
+  .ajax-loader {
+    width: 60px;
+    margin: 20px auto;
+    background-color: white;
+    text-align: center;
+    border-radius: 3px;
+    padding: 10px 0;
+  }
+  
+  .category, .section {
+  }
+  
+  .category-name {
+    background-color: white;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    border-top: 1px solid #878787;
+    border-bottom: 1px solid #878787;
+  }
+  
+  .section {
+    margin: 10px;
+    border: 1px solid #878787;
+    border-radius: 3px;
+    .section-name {
+      background-color: white;
+      border-bottom: 1px solid #878787;
+      padding: 5px;
+      font-size: 14px;
+    }
+    .candidacy {
+      margin: 10px;
+      overflow: auto;
+      .photo {
+        float: left;
+        img {
+          border-radius: 3px;
+        }
+      }
+      .proposition {
+        margin-left: 54px;
+        background-color: white;
+        padding: 10px;
+        border-bottom: 1px solid #eee;
+        font-size: 13px;
+      }
+    }
+  }
+  
+}
+
+#share {
+  
+  p {
+    margin-left: 10px;
+    font-size: 14px;
+  }
+  
+  ul {
+    margin: 10px;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    background-color: #fff;
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+  
+  ul li {
+    cursor: pointer;
+    padding: 10px;
+    overflow: auto;
+    border-bottom: 1px solid #eee;
+    .image {
+      float: left;
+      img {
+        border-radius: 3px;
+      }
+    }
+    .name {
+      margin-left: 58px;
+    }
+  }
+}

@@ -1,0 +1,275 @@
+.page-header
+  %h1 Everyone
+  
+.page-header
+  %h2
+    %small GET
+    = "/propositions/{id}"
+
+%p Get information about a proposition.
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/propositions/#{Proposition.first.id}
+
+%p
+  %a.btn.small{href: "/api/v1/propositions/#{Proposition.first.id}".to_url} Try
+
+.page-header
+  %h2
+    %small GET
+    = "/propositions/search"
+    
+%p Search for propositions.
+    
+%h3 Parameters
+%table.bordered-table
+  %tbody
+    %tr
+      %td limit
+      %td 10
+    %tr
+      %td offset
+      %td 50
+    %tr
+      %td tagIds
+      %td id1,id2
+    %tr
+      %td candidacyIds
+      %td id1,id2
+    %tr
+      %td userDriven (optional)
+      %td 1 (set to 1 unless it's a robot that using our API)
+    
+%p
+  %span.label EXAMPLE
+    
+%pre
+  http://voxe.org/api/v1/propositions/search?candidacyIds=#{Candidacy.first.id}
+  
+%p
+  %a.btn.small{href: "/api/v1/propositions/search?candidacyIds=#{Candidacy.first.id}".to_url} Try
+
+.page-header
+  %h2
+    %small GET
+    \/propositions/:id/comments
+
+%p Get the list of comments on a proposition.
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/propositions/{id}/comments
+
+.page-header
+  %h1 Protected
+
+.page-header
+  %h2
+    %small POST
+    \/propositions
+
+%p Create a proposition.
+
+%h3 Parameters
+%table.bordered-table
+  %tbody
+    %tr
+      %td proposition[text]
+      %td More taxes for poor people
+    %tr
+      %td proposition[candidacyId]
+      %td 4f0a16e556cc600ad6000263
+    %tr
+      %td proposition[tagIds]
+      %td 4f0a16e456cc600ad6000168,4f0a16e456cc600ad60001b0
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/propositions
+
+%p
+  %a.btn.small Try
+
+.page-header
+  %h2
+    %small DELETE
+    \/propositions/{id}
+
+%p Delete a proposition.
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/propositions/{id}
+
+%p
+  %a.btn.small Try
+
+.page-header
+  %h2
+    %small POST
+    \/propositions/:id/addcomment
+
+%p Add a comment on a proposition. User have to be signed in.
+
+%h3 Parameters
+%table.bordered-table
+  %tbody
+    %tr
+      %td text (note that this is not comment[text])
+      %td Life is beautiful
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/propositions/{id}/addcomment
+
+.page-header
+  %h2
+    %small DELETE
+    \/propositions/:id/removecomment
+
+%p Remove a comment from database.
+
+%h3 Parameters
+%table.bordered-table
+  %tbody
+    %tr
+      %td commentId
+      %td 4f0a16e456cc600ad6000168
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/propositions/{id}/removecomment
+
+.page-header
+  %h2
+    %small POST
+    \/propositions/:id/addembed
+
+%p Add an embed content on a proposition. It can be videos, links, articles, etc...
+
+%h3 Parameters
+%table.bordered-table
+  %tbody
+    %tr
+      %td url
+      %td http://www.youtube.com/watch?v=XGQewDiDN_E
+    %tr
+      %td title (optional: used only if url is not embedable)
+      %td General statistics
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/propositions/{id}/addembed
+
+.page-header
+  %h2
+    %small DELETE
+    \/propositions/:id/removeembed
+
+%p Remove an embed from a proposition.
+
+%h3 Parameters
+%table.bordered-table
+  %tbody
+    %tr
+      %td embedId
+      %td 4f2716dd56cc6002fa000001
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/propositions/{id}/removeembed
+
+.page-header
+  %h2
+    %small POST
+    \/propositions/:id/support
+
+%p Make the signed user to support this proposition
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/propositions/{id}/support
+
+.page-header
+  %h2
+    %small DELETE
+    \/propositions/:id/support
+
+%p Make the signed user to remove his support to this proposition
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/propositions/{id}/support
+
+.page-header
+  %h2
+    %small POST
+    \/propositions/:id/against
+
+%p Make the signed user to be against this proposition
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/propositions/{id}/against
+
+.page-header
+  %h2
+    %small DELETE
+    \/propositions/:id/against
+
+%p Make the signed user to remove a his against to this proposition
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/propositions/{id}/against
+
+.page-header
+  %h2
+    %small POST
+    \/propositions/:id/favorite
+
+%p Make the signed user to favorite this proposition
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/propositions/{id}/favorite
+
+.page-header
+  %h2
+    %small DELETE
+    \/propositions/:id/favorite
+
+%p Make the signed user to unfavorite this proposition
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/propositions/{id}/favorite

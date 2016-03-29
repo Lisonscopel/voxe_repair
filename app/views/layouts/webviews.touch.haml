@@ -1,0 +1,12 @@
+!!! HTML
+%html
+  %head
+    %title Voxe.org
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    = stylesheet_link_tag "webviews"
+    = javascript_include_tag "webviews"
+    = render "layouts/partials/google_analytics"
+    = render "layouts/partials/chartbeat_header"
+  %body{:class => "#{touch_device}"}
+    = yield
+    = render "layouts/partials/chartbeat_body"

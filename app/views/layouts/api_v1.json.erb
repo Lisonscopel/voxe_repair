@@ -1,0 +1,5 @@
+<% if params[:callback].blank? %>
+  <%= render partial: 'api/v1/response', formats: [:json], locals: {response: response} %>
+<% else %>
+  <%= params[:callback] %>(<%= render partial: 'api/v1/response', formats: [:json], locals: {response: response} %>);
+<% end %>

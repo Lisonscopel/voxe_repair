@@ -1,0 +1,104 @@
+%script#application-template{type: 'text/html'}
+  #header
+    .twitter= link_to image_tag('share/twitter16.png'), twitter_intent_url, target: "_blank"
+    .facebook= image_tag 'share/facebook16.png'
+    .container
+
+  #content
+    #candidacies-list.page
+    #tags-list.page
+
+    #propositions.page
+      .indicator= image_tag 'ajax-loader.gif'
+      .container
+
+  #footer
+    .container
+      = link_to image_tag('icons/16.png', valign: 'middle'), root_url, target: "_blank"
+      = link_to "Voxe.org", root_url, target: "_blank"
+      = link_to "Ajouter ce comparateur sur votre site", platform_embed_index_url, target: "_blank", id: "instructions"
+
+%script#candidacy-cell-template{type: 'text/html'}
+  :plain
+    <li candidacy-id="{{candidacy.id}}">
+      {{#candidacy.candidates}}
+        <div class="icon"><img src="{{photo.sizes.small.url}}" width="32px" height="32px" /></div>
+        <div class="name">
+          <input type="checkbox" />
+          {{firstName}} {{lastName}}
+        </div>
+      {{/candidacy.candidates}}
+    </li>
+
+#candidacies-list-template
+  %ul
+
+%script#tags-list-template{type: 'text/html'}
+  %ul
+    :plain
+      {{#tags}}
+        <li tag-id="{{id}}">
+          <div class="icon"><img src="{{icon.prefix}}64{{icon.name}}" width="32px" height="32px" /></div>
+          <div class="name">{{name}}</div>
+        </li>
+      {{/tags}}
+
+%script#propositions-template{type: 'text/html'}
+  :plain
+    {{#categories}}
+      <div class="category">
+        <div class="category-name">{{name}}</div>
+
+        {{#candidacies}}
+          <div class="candidacy">
+            {{#candidates}}
+              <div class="photo">
+                <img src="{{photo.sizes.small.url}}" width="44px" height="44px" />
+              </div>
+            {{/candidates}}
+
+            {{#propositions}}
+              <div class="proposition">
+                <ul class="embeds">
+                  {{#embeds}}
+                    <li><a class="{{type}}" href="{{url}}" target="_blank">{{title}}</a></li>
+                  {{/embeds}}
+                </ul>
+                {{text}}
+              </div>
+            {{/propositions}}
+          </div>
+        {{/candidacies}}
+
+        {{#sections}}
+          <div class="section">
+            <div class="section-name">{{name}}</div>
+            {{#candidacies}}
+              <div class="candidacy">
+                {{#candidates}}
+                  <div class="photo">
+                    <img src="{{photo.sizes.small.url}}" width="44px" height="44px" />
+                  </div>
+                {{/candidates}}
+
+                {{#propositions}}
+                  <div class="proposition">
+                    <ul class="embeds">
+                      {{#embeds}}
+                        <li><a class="{{type}}" href="{{url}}" target="_blank">{{title}}</a></li>
+                      {{/embeds}}
+                    </ul>
+                    {{text}}
+                  </div>
+                {{/propositions}}
+                {{^propositions}}
+                  <div class="proposition">
+                    <a href="https://docs.google.com/spreadsheet/viewform?formkey=dGNsLWFoYXZ0LXRaRVVrdU9Tay04ZFE6MQ" target="_blank">Vous avez identifié une proposition manquante d'un candidat ? Envoyez-la nous !</a>
+                  </div>
+                {{/propositions}}
+              </div>
+            {{/candidacies}}
+          </div>
+        {{/sections}}
+      </div>
+    {{/categories}}

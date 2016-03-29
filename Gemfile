@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.2.2'
+ruby '2.2.3'
 gem 'rails', '3.2.22'
 
 group :development do

@@ -1,0 +1,161 @@
+.page-header
+  %h1 Everyone
+
+.page-header
+  %h2
+    %small POST
+    \/users
+
+%p Create an user.
+
+%h3 Parameters
+%table.bordered-table
+  %tbody
+    %tr
+      %td user[name]
+      %td John Doe
+    %tr
+      %td user[email]
+      %td john@doe.org
+    %tr
+      %td user[password]
+      %td something
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/users
+
+.page-header
+  %h2
+    %small GET
+    \/users/verify
+
+%p
+  Sign in with an user. It will return a user object with token.
+  Just send it on every request as parameter named
+  %code auth_token
+  \.
+
+%h3 Parameters
+%table.bordered-table
+  %tbody
+    %tr
+      %td email
+      %td john@doe.org
+    %tr
+      %td password
+      %td something
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/users/verify
+
+.page-header
+  %h2
+    %small GET
+    \/users/facebookconnect
+
+%p Use Facebook connect. It return an user object with an access token if the connection was successful.
+
+%h3 Parameters
+%table.bordered-table
+  %tbody
+    %tr
+      %td facebookToken
+      %td XYZXYZXYZXYZXYZ
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/users/facebookconnect
+
+.page-header
+  %h2
+    %small GET|PUT
+    \/users/self
+
+%p
+  Returns current user. Or update it by using PUT method.
+
+%pre
+  http://voxe.org/api/v1/users/self
+
+.page-header
+  %h1 Protected
+
+.page-header
+  %h2
+    %small GET
+    \/users/search
+
+%p Search for users.
+
+%h3 Parameters
+%table.bordered-table
+  %tbody
+    %tr
+      %td name
+      %td Benjamin
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/users/search?name=benjamin
+
+.page-header
+  %h2
+    %small DELETE
+    \/users/id
+
+%p Destroy an user from database.
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/users/{id}
+
+.page-header
+  %h2
+    %small PUT
+    \/users/id/addadmin
+
+%p Grant admin access to an user.
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/users/{id}/addadmin
+
+.page-header
+  %h2
+    %small PUT
+    \/users/id/removeadmin
+
+%p Revoke admin access to an user.
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/users/{id}/removeadmin
+
+.page-header
+  %h2
+    %small GET
+    \/users/admins
+
+%p Get list of all admins.
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/users/admins

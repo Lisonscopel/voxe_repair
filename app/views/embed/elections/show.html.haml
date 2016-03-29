@@ -1,0 +1,35 @@
+!!!
+%html
+  %head
+    %title= "#{@election.name} | Voxe"
+    = stylesheet_link_tag "embed/elections"
+    = javascript_include_tag "embed/elections"
+    = render "layouts/partials/google_analytics"
+    = render "layouts/partials/chartbeat_header"
+  %body
+    = render 'layouts/partials/facebook.html'
+    :javascript
+      $(function() {
+        new VoxeElection({
+          electionId: '#{@election.id}',
+          tagIds: #{params['tagIds'].try(:split, ',').to_json},
+          candidacyIds: #{params['candidacyIds'].try(:split, ',').to_json},
+          defaultCandidacyIds: #{params['defaultCandidacyIds'].try(:split, ',').to_json},
+          defaultTagId: #{params['defaultTagId'].to_json}
+        });
+      });
+      
+    #touch{style: "display: none"}
+      .container
+        = link_to image_tag('icons/16.png', valign: 'middle'), root_url, target: "_blank"
+        = link_to "Voxe.org", root_url, target: "_blank"
+      .market= link_to_app_store image_tag("embed/elections/apple-app-store.png")
+      .market= link_to_android_market image_tag("embed/elections/google-app-store.png")
+      
+    #app
+      
+    #templates
+      = render 'templates.mustache'
+
+    = render "layouts/partials/chartbeat_body"
+    = render 'layouts/partials/twitter.html'

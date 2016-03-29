@@ -1,0 +1,34 @@
+- if election_tag.children_election_tags.empty?
+  - tag_propositions = @tags_propositions[election_tag.tag.id.to_s]
+  - unless tag_propositions.blank?
+    .help
+      %span= election_tag.tag.name
+      
+    
+    - if tag_propositions
+      - @candidacies.each do |candidacy|
+        .propositions
+          / candidate
+          .candidate
+            = image_tag candidacy.candidates.first.photo_url(:medium), size: "40x40"
+            
+          / propositions
+          - candidacy_propositions = tag_propositions.select { |p| p.candidacy_id == candidacy.id }
+          - if candidacy_propositions.empty?
+            .proposition
+              %p{style: "color: gray"}= t("comparator.no_proposition_available")
+          - candidacy_propositions.each do |proposition|
+            .proposition
+              %p
+                = link_to proposition.text, webviews_proposition_path(proposition.id)
+              - proposition.embeds.each do |embed|
+                - if embed.type == 'video' && embed.provider_name == 'YouTube'
+                  .embed
+                    = embed.video_player.html_safe
+            
+- else
+  .help
+    %span= election_tag.tag.name
+    
+  - election_tag.children_election_tags.each do |children_tag|
+    = render "tag", election_tag: children_tag

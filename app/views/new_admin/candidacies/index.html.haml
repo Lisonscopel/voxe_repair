@@ -1,0 +1,27 @@
+.row-fluid
+  .span12
+    %h2 Candidacies of #{@election.name}
+
+    = render 'form'
+
+    %table.table.table-striped.table-hover.table-condensed
+      %thead
+        %tr
+          %th Image
+          %th Name
+          %th Published
+          %th Actions
+      %tbody
+        - for candidacy in @candidacies
+          - candidate = candidacy.candidates.first
+          %tr
+            %td= image_tag candidate.photo_url(:small)
+            %td= candidate.name
+            %td
+              - if candidacy.published
+                = link_to "", new_admin_election_candidacy_toggle_path(@election, candidacy), class: "election-published", method: :post
+              - else
+                = link_to "", new_admin_election_candidacy_toggle_path(@election, candidacy), class: "election-unpublished", method: :post
+            %td
+              = link_to "Propositions", new_admin_election_candidacy_propositions_path(@election, candidacy), class: 'btn btn-small'
+              = link_to "Delete", new_admin_election_candidacy_path(@election, candidacy), class: "btn btn-small btn-danger", method: :delete, confirm: "Are you sure?"

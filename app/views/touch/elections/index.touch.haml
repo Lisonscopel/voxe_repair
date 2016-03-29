@@ -1,0 +1,17 @@
+:javascript
+  $(function() {
+    new VoxeElection(#{@options.to_json});
+  });
+    
+#templates
+  = render '/touch/application/templates.mustache'
+
+#application-view
+    
+  #share.modal-view
+        
+  #navigation-view
+    .page-view#elections-list
+    .page-view#candidacies-list
+    .page-view#tags
+    .page-view#compare

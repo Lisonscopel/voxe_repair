@@ -1,0 +1,77 @@
+.page-header
+  %h1 Everyone
+
+.page-header
+  %h2
+    %small GET
+    = "/candidacies/{id}"
+  
+%p Get information about a candidacy.
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/candidacies/#{Candidacy.first.id}
+  
+%p
+  %a.btn.small{href: "/api/v1/candidacies/#{Candidacy.first.id}".to_url} Try
+
+.page-header
+  %h1 Protected
+
+.page-header
+  %h2
+    %small PUT
+    \/candidacies/{id}
+
+%p Update a candidacy.
+
+%h3 Parameters
+%table.bordered-table
+  %tbody
+    %tr
+      %td candidacy[published]
+      %td true
+    %tr
+      %td candidacy[owner_id]
+      %td XXXXXXXXXXXXX
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/candidacies/4ed1cb0203ad190006000132
+
+.page-header
+  %h2
+    %small POST
+    \/candidacies/{id}/addorganization
+
+%p Bind an organization to this candidacy.
+
+%h3 Parameters
+%table.bordered-table
+  %tbody
+    %tr
+      %td organizationId
+      %td 4ed1cb0203ad190006000130
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/candidacies/4ed1cb0203ad190006000132/addorganization
+
+.page-header
+  %h2
+    %small DELETE
+    \/candidacies/{id}
+
+%p Destroy a candidacy from database
+
+%p
+  %span.label EXAMPLE
+
+%pre
+  http://voxe.org/api/v1/candidacies/4ed1cb0203ad190006000132
