@@ -1,0 +1,74 @@
+{<img src="https://travis-ci.org/voxe/voxe-web.png" alt="Build Status" />}[https://travis-ci.org/voxe/voxe-web]
+
+== Getting started
+
+Clone the git repository
+  git clone git@github.com:voxe/voxe-web.git
+
+Ensure you have ImageMagick installed on your system. If not, check out chapter "Dependencies" below.
+
+At the prompt command, install gems:
+  bundle install
+
+At the prompt command, start your server:
+  rails server
+
+If you need some data, check out chapter "Import Data" below.
+
+== Environment
+
+* Ruby 1.9.3
+* mongoDB 2.2.X
+* imagemagick
+* heroku
+
+== Dependencies
+
+We doing some image processing with ImageMagick (http://www.imagemagick.org).
+
+For MacOS X users, you can install Homebrew (http://mxcl.github.com/homebrew) a packet manager and then install ImageMagick.
+
+At the command prompt:
+  brew install imagemagick
+
+If you want to launch acceptance tests, you should install the qt development libraries.
+
+MacOS X with homebrew:
+  brew install qt
+
+An installation guide for qt libs is available here : https://github.com/thoughtbot/capybara-webkit/wiki/Installing-QT
+
+Then:
+  bundle install
+
+== Import Data
+
+To get some data from 2007 French Presidential Election, at the command prompt type:
+
+  rake migrate:france2007
+
+If you have access to your staging server, you can also use the voxe custom "heroku-mongo-sync" plugin to get the database we use on this server:
+
+  heroku plugins:install http://github.com/voxe/voxe-heroku-mongo-sync.git
+  heroku mongo:pull --app voxe
+
+Then, to update the staging server with the production data
+
+  heroku mongo:push --app voxe-staging
+
+== Testing
+
+At the command prompt, launch tests:
+
+  rake test
+
+There are also acceptance tests which can be run with this command:
+  rake cucumber
+
+== Deployment
+
+Deploying in staging mode:
+  rake deploy:staging
+
+Or in production mode:
+  rake deploy:production

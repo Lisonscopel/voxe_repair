@@ -1,0 +1,31 @@
+defaults: &defaults
+  twitter: voxe
+  google_analytics:
+    id: UA-28225427-1
+  fb_defaults:
+    scope: "email,offline_access,publish_stream,user_birthday,user_likes,user_location,user_education_history,user_work_history"
+
+test:
+  <<: *defaults
+  host: localhost:3000
+  facebook:
+    app_id: 0 #TODO create test fb app
+    app_secret: 0
+
+development:
+  <<: *defaults
+  host: localhost:3000
+  facebook:
+    app_id: 341867925824593
+
+production:
+  <<: *defaults
+  host: voxe.org
+  facebook:
+    app_id: 166791223426274
+
+staging:
+  <<: *defaults
+  host: staging.voxe.org
+  facebook:
+    app_id: 339716929372553

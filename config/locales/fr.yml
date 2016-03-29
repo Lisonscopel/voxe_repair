@@ -1,0 +1,81 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+fr:
+  navigation:
+    about: Projet
+    how: Sources
+    press: Presse
+    apps: Apps
+    API: API
+    hackathon: Hackathon
+    method: Méthode
+    donate: Soutenir
+    team: Equipe
+    special_thanks: Remerciements
+    candidates: "Candidats"
+    sign_in: Se connecter
+  comparator:
+    choose_a_country: Choissisez un pays
+    upcoming_elections: Prochaines élections
+    previous_elections: Elections passées
+    choose_an_election: Sélectionnez une entrée
+    choose_two_candidates: ... puis deux personnes, et...
+    choose_a_theme: ... choisissez un thème
+    no_proposition_available: En attente de proposition.
+    send_us_a_missing_proposition: Vous avez identifié une proposition manquante d'un candidat ? Envoyez-la nous !
+    learn_more: En savoir plus
+    sign_in_or_sign_up_to_add_a_comment: Connectez-vous ou créez un compte pour ajouter un commentaire
+    add_your_country: Ajouter votre pays
+    add_your_election: Ajouter votre election
+    add_a_candidate: Ajouter un candidat
+  account:
+    not_yet_on_voxe_signup: Pas encore sur Voxe? S'inscrire.
+    full_name: Nom complet
+    email_address: Adresse e-mail
+    password: Mot de passe
+    sign_up: S'inscrire
+    already_on_voxe_sign_in: Déjà sur Voxe? Se connecter.
+    sign_in: Connexion
+    edit_my_profile: Editer mon profile
+  backoffice:
+    my_profile: Mon profil
+    my_propositions: Mes propositions
+    index: Accueil du backoffice candidat
+    new_proposition: Ajoutez proposition à ce thème
+    add_link: Ajouter un lien
+    remove_link: Supprimer le lien
+    submit: Soumettre les changements
+    search: "Retrouvez une proposition :"
+    characters_max: caractères maximum
+    links: Liens vers du contenu concernant cette proposition
+    profile: "Profil de %{name} pour l'%{election}"
+    website: Votre site web
+    test_link: Tester le lien
+    social_username: Votre nom d'utilisateur
+    wikipedia_article: URL de l'article
+    date_hint: JJ/MM/AAAA
+    create: "Créer"
+    update: "Mettre à jour"
+    logged_as: "Connecté en tant que"
+    sign_out: "Se déconnecter"
+    address: Adresse
+    birthday: Date de naissance
+    phone: "Téléphone"
+    biography: Biographie
+    introduction: "Présentation"
+    choose_a_theme: "Choissisez un thème"
+    proposition_text: Texte de la proposition
+    edit: Editer
+    postal_code: Code postal
+    picture: Photo
+    view_my_public_profile: Voir mon profil publique
+    back: "Revenir en arrière"
+    delete: "Supprimer"
+    alert_confirmation: "Etes-vous sûr ?"
+    political_party: Parti politique
+    election_target: Election
+    sub_theme: Sous-thème
+    edit_proposition_sub_tag: "Sous-thèmes : Saisissez ci-dessus le ou les sous-thèmes où se trouvera votre proposition."
+    edit_proposition_text: "Texte de la proposition : Nous recommandons une proposition d'environ 300 caractères, afin qu'elle reste lisible par vos électeurs, et facilement comparable. Elle doit par ailleurs ne présenter qu'une seule idée."
+    edit_proposition_embed_link: "Liens vers du contenu contextuel : Vous pouvez associer à votre proposition des liens hypertextes (qui pointent par exemple vers une définition ou un chiffre clé) ou des vidéos (Youtube ou Dailymotion)."

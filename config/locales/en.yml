@@ -1,0 +1,81 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  navigation:
+    about: About
+    how: How
+    press: Press
+    apps: Apps
+    API: API
+    hackathon: Hackathon
+    method: Method
+    donate: Donate
+    team: Team
+    special_thanks: Special thanks
+    candidates: Candidates
+    sign_in: Sign in
+  comparator:
+    choose_a_country: Choose a country
+    upcoming_elections: Upcoming elections
+    previous_elections: Previous elections
+    choose_an_election: Choose an election
+    choose_two_candidates: ... then choose two candidates, and...
+    choose_a_theme: ... choose a theme
+    no_proposition_available: No proposition available.
+    send_us_a_missing_proposition: Send us a missing proposition!
+    learn_more: Learn more
+    sign_in_or_sign_up_to_add_a_comment: Sign in or sign up to add a comment
+    add_your_country: Add your country
+    add_your_election: Add your election
+    add_a_candidate: Add a candidate
+  account:
+    not_yet_on_voxe_signup: No yet on Voxe? Sign up.
+    full_name: Full name
+    email_address: Email address
+    password: Password
+    sign_up: Sign up
+    already_on_voxe_sign_in: Already on Voxe? Sign in.
+    sign_in: Log in
+    edit_my_profile: Edit my profile
+  backoffice:
+    my_profile: My profile
+    my_propositions: My propositions
+    index: Candidate backoffice dashboard
+    new_proposition: New proposition
+    add_link: Add link
+    remove_link: Remove link
+    submit: Submit changes
+    search: "Quick search:"
+    characters_max: characters maximum
+    links: Links to webcontent regarding this proposition
+    profile: "%{name}'s profile for the %{election}"
+    website: Your website
+    test_link: Test this link
+    social_username: Your username
+    wikipedia_article: URL of article
+    date_hint: DD/MM/YYYY
+    create: Create
+    update: Update
+    logged_as: Logged as
+    sign_out: Sign out
+    address: Addresse
+    birthday: Birthday
+    phone: Phone
+    biography: Biography
+    introduction: Introduction
+    choose_a_theme: Choose a theme
+    proposition_text: Text
+    edit: Edit
+    postal_code: Postal Code
+    picture: Picture
+    view_my_public_profile: View my public profile
+    back: Back
+    delete: Delete
+    alert_confirmation: Are you sure?
+    political_party: Political party
+    election_target: Election
+    sub_theme: Sub-theme
+    edit_proposition_sub_tag: "Sub-themes: Select below one or several subthemes under which you'd like your proposition to appear"
+    edit_proposition_text: "Proposition text: The proposition shouldn't be longer than 300 characters, so it remains readible and easy to compare with other propositions. Furthermore, the proposition should only present one idea. Finally, note that the content should only come from candidate's official sources. "
+    edit_proposition_embed_link: "Enrich your propositon: Please list here the source you've used. You can also link your proposition to contextual content using hyperlinks (example: definitions, keywords, videos...)."
